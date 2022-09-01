@@ -1,0 +1,36 @@
+.container-head {
+    width: 100%;
+    position: fixed;
+    top :0px;
+    background-color: white;
+    z-index: 1;
+}
+
+.head-page {
+    max-width: 100%; 
+    height: 83px;
+    box-shadow: 0 0 10px grey;
+
+}
+
+.head-img {
+    padding: 25px;
+    background-color: #20c997;
+    margin-left: 5%;
+}
+
+.img-cart{
+    width: 35px;
+    height: 35px;
+}
+
+.btn-cart {
+    position: relative;
+}
+
+.total{
+    position: absolute;
+    top:0;
+    right: 5px;
+    background-color: aqua;
+}

@@ -1,0 +1,75 @@
+.home {
+    margin-top: 100px;
+    height: 100%;
+}
+
+.home-head {
+    position: relative;
+    max-width: 100%;
+    height: 300px;
+    background-color: rgb(209 210 212);
+    background-image: url(../../../public/homeEvythingOk.PNG);
+    background-repeat: no-repeat;
+    background-position-x: 50%;
+    background-position-y: 35%;
+}
+
+.bg-title {
+    position: relative;
+    width: 200px;
+    height: 40px;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    top: 50%;
+}
+
+.head-content{
+    position: relative;
+    width: 550px;
+    height: 250px;
+    background-color: white;
+    margin-left: 5%;
+    top:-8%;
+    border-radius: 5px;
+    color: black;
+}
+
+.head-content-child{
+    margin-left: 15px;
+}
+
+.head-content-child p{
+    margin: 5px;
+}
+
+.head-content-child p:first-child{
+    padding-top: 30px;
+}
+
+.nav-date{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 30px;
+    position: sticky;
+    top: 80px;
+    font-size: 20px;
+    border-bottom: 1px solid grey;
+    background-color: white;
+}
+.nav-date a {
+    margin-left: 20px;
+}
+
+.render-data{
+    scroll-behavior: smooth;
+}
+
+.render-day{
+    padding-top: 100px;
+}
+
+.render-day:first-child{
+    padding-top: 50px;
+}
