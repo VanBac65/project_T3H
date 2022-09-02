@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ButtonAddToCard from './buttonAddToCard'
 
 export default function DataDay({ data, day }) {
@@ -31,7 +32,9 @@ export default function DataDay({ data, day }) {
                 {
                     data[day].products.data.map((elm) => {
                         return <div key={elm?.id} className='col-md-4 text-center mt-5'>
-                            <img className='w-50 rounded' src={`${elm.imagePath}`} alt='' />
+                            <div className='col-md-6 box-img m-auto'>
+                                <Link to='/'><img className='img-data w-100 rounded' src={`${elm.imagePath}`} alt='' /></Link>
+                            </div>
                             <p className='fs-6 mt-3 mb-0'>{elm?.name}</p>
                             <p className='fs-6 mt-0'>{`${(Number(elm?.price)).toLocaleString()} ${elm?.currency}`}</p>
                             <ButtonAddToCard />

@@ -4,11 +4,12 @@ import { Link } from 'react-router-dom'
 import Search from 'antd/lib/transfer/search'
 // import a from '../../../../public/cart.PNG'
 
-export default function HeadPage({ log, setAccessToken, setLog }) {
+export default function HeadPage({ log, accessToken, setLog }) {
     const btnLog = (log) => {
-        console.log(log)
+        // console.log(log)
         if (log === 'LOGOUT') {
-            setAccessToken(false)
+            localStorage.clear()
+            // setAccessToken('false')
             setLog('LOGIN')
         }
     }

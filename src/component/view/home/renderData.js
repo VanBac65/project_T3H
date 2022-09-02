@@ -15,7 +15,7 @@ export default function RenderData() {
             }
         )
             .then(rs => {
-                console.log(rs.data.data.sections)
+                // console.log(rs.data.data.sections)
                 setData(pre => pre = rs.data.data.sections)
                 setIsLoading(pre => pre = false)
             })
