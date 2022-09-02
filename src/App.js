@@ -12,6 +12,7 @@ function App() {
   const [log, setLog] = useState(accessToken === false ? 'LOGIN' : 'LOGOUT')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  // const [status, setStatus] = useState(localStorage?.getItem('status') || false)
   const handleUsername = (e) => {
     setUsername(pre => pre = e.target.value)
   }
@@ -23,33 +24,24 @@ function App() {
     console.log(password)
     axios.post('https://api-qa.muangay-vn.com/api/user/login', {
       "mobilePhone": username,
-      "password": password
+      "password": password,
     })
       .then(rs => {
         if (rs?.status === 201) {
-          // console.log(rs)
-          // alert('Ok!!')
+          localStorage.setItem('status',true)
           localStorage.setItem('accessToken', rs.data.data.token)
           setAccessToken(true)
           setLog('LOGOUT')
         }
-        // else if(rs?.status===400){
-        //   alert('Sai tài khoản ha')
-        // }
       })
       .catch(er => {
         alert('Sai tai khoan hoac mat khau!!!')
       })
-    // localStorage.setItem('accessToken', 'true')
-    // console.log(accessToken)
-    // setAccessToken(localStorage.getItem('accessToken'))
-    // setLog('LOGOUT')
-    // alert('Ok!!')
   }
   return (
     <div className="App">
       <BrowserRouter>
-        <HeadPage log={log} accessToken={accessToken} setLog={setLog} />
+        <HeadPage log={log} setLog={setLog} />
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/CustomerMenu' element={<Home />} />

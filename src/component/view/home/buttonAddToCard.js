@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function ButtonAddToCard() {
     const addToCart = () => {
@@ -7,7 +7,9 @@ export default function ButtonAddToCard() {
     }
     return (
         <div>
-            <Link to='/Login'><button className='btn border bg-success rounded-pill' onClick={() => addToCart()}>Add to card</button></Link>
+            <Link to={localStorage.getItem('status') ? '/' : '/LOGIN'}>
+                <button className='btn border bg-success rounded-pill' onClick={() => addToCart()}>Add to card</button>
+            </Link>
         </div>
     )
 }

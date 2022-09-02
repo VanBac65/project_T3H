@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../../style/headPage/headPage.css'
 import { Link } from 'react-router-dom'
 import Search from 'antd/lib/transfer/search'
 // import a from '../../../../public/cart.PNG'
 
-export default function HeadPage({ log, accessToken, setLog }) {
+export default function HeadPage({ log, setLog }) {
     const btnLog = (log) => {
-        // console.log(log)
         if (log === 'LOGOUT') {
             localStorage.clear()
-            // setAccessToken('false')
             setLog('LOGIN')
         }
     }
