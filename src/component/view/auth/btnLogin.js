@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 export default function BtnLogin({ btnLogin, accessToken }) {
-    console.log(accessToken)
     return (
         <div>
             <Link to={accessToken === null ? '/LOGIN' : '/CustomerMenu'}>

@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ButtonAddToCard from './buttonAddToCard'
 
-export default function DataDay({ data, day, details, setTotalCategory }) {
+export default function DataDay({ data, day, details, setTotalCategory, setSubtotal, setRenderCategory }) {
     let valueDay
     let titleDay
     if (day === 0) {
@@ -45,7 +45,7 @@ export default function DataDay({ data, day, details, setTotalCategory }) {
                                 </Link>
                                 <p className='render-day-name fs-6 mt-3 mb-0'>{elm?.name}</p>
                                 <p className='fs-6 mt-0'>{`${(Number(elm?.price)).toLocaleString()} ${elm?.currency}`}</p>
-                                <ButtonAddToCard elm={elm} setTotalCategory={setTotalCategory} />
+                                <ButtonAddToCard elm={elm} setTotalCategory={setTotalCategory} setSubtotal={setSubtotal} setRenderCategory={setRenderCategory} />
                             </div>
                         )
                     })

@@ -1,49 +1,47 @@
 import React, { useState } from 'react'
 
-export default function CategoryListItem({ elm, setTotalCategory }) {
+export default function CategoryListItem({ elm, setTotalCategory, setSubtotal, setRenderCategory }) {
     const saveCount = () => {
-        let newCount = JSON.parse(localStorage.getItem('categoryList'))
-        newCount.forEach(el => {
+        let setCount = JSON.parse(localStorage.getItem('categoryList'))
+        setCount.forEach(el => {
             if (el.name === elm.name) {
                 el.count = item.count
                 el.total = Number(el.price) * item.count
             }
         });
-        localStorage.setItem('categoryList', JSON.stringify(newCount))
+        
+        const newArr = setCount.filter((el) => el.count !== 0)
+        localStorage.setItem('categoryList', JSON.stringify(newArr))
+        const setToltal = JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).reduce((pre, cur) => {
+            pre += cur.total
+            return pre
+        }, 0) : 0
+        setSubtotal(setToltal)
     }
     const [count, setCount] = useState(elm.count)
     const [del, setDel] = useState(count === 1 ? 'Del' : '-')
     const item = elm
     const handleSub = (elm) => {
-        if (count <= 2) {
-            setDel('Del')
-            saveCount()
-            if (count >= 1) {
-                setCount(pre => {
-                    item.count = pre - 1
-                    saveCount()
-                    return --pre
-                })
-            }
-        }
-        else {
-            setCount(pre => {
+        setCount(pre => {
+            if (pre - 1 === 1) {
                 item.count = pre - 1
                 saveCount()
-                return --pre
-            })
-        }
-        if (count === 1) {
-            if (JSON.parse(localStorage.getItem('categoryList')) != []) {
-                console.log(elm.name)
-                console.log(JSON.parse(localStorage.getItem('categoryList')))
-                const newArrCategoryList = JSON.parse(localStorage.getItem('categoryList')).filter(el => {
-                    return el.name != elm.name
-                })
-                setTotalCategory(newArrCategoryList.length)
-                localStorage.setItem('categoryList', JSON.stringify(newArrCategoryList))
+                setDel('Del')
+                return pre - 1
             }
-        }
+            else if (pre === 1) {
+                item.count = pre - 1
+                saveCount()
+                setRenderCategory(JSON.parse(localStorage.getItem('categoryList')))
+                setTotalCategory(JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).length : 0)
+                return pre
+            }
+            else {
+                item.count = pre - 1
+                saveCount()
+                return pre - 1
+            }
+        })
     }
     const handleSum = () => {
         setDel('-')
@@ -56,7 +54,7 @@ export default function CategoryListItem({ elm, setTotalCategory }) {
     return (
         <div className='category-item'>
             <div className='category-item-img'>
-                <img src={elm.img} />
+                <img src={elm.img} alt=''/>
             </div>
             <div>
                 <div className='category-item-name'><h3>{elm.name}</h3></div>

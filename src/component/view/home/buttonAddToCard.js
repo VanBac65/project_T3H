@@ -1,19 +1,6 @@
-import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ButtonAddToCard({ elm, setTotalCategory, type }) {
-    const [onCategory, setOnCategory] = useState(() => {
-        if (JSON.parse(localStorage.getItem('categoryList')) === null) {
-            return false
-        }
-        else {
-            const category = JSON.parse(localStorage.getItem('categoryList')).find((el) => elm.name === el.name)
-            if (category) {
-                return true
-            }
-            return false
-        }
-    })
+export default function ButtonAddToCard({ elm, setTotalCategory, setSubtotal, setRenderCategory, type }) {
     const addToCart = (elm) => {
         if (localStorage.getItem('categoryList') === null) {
             localStorage.setItem('categoryList', JSON.stringify([{
@@ -23,6 +10,10 @@ export default function ButtonAddToCard({ elm, setTotalCategory, type }) {
                 count: 1,
                 total: Number(elm.price)
             }]))
+            setSubtotal(JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).reduce((pre, cur) => {
+                pre += cur.total
+                return pre
+            }, 0) : 0)
         }
         else {
             let category = JSON.parse(localStorage.getItem('categoryList'))
@@ -35,7 +26,12 @@ export default function ButtonAddToCard({ elm, setTotalCategory, type }) {
                     total: Number(elm.price)
                 })
             localStorage.setItem('categoryList', JSON.stringify(category))
+            setSubtotal(JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).reduce((pre, cur) => {
+                pre += cur.total
+                return pre
+            }, 0) : 0)
         }
+        setRenderCategory(JSON.parse(localStorage.getItem('categoryList')))
         setTotalCategory(JSON.parse(localStorage.getItem('categoryList')).length)
     }
     let path

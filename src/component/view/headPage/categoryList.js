@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import '../../../style/headPage/headPage.css'
 import CategoryListItem from './categoryListItem'
 import Pay from './pay'
 
-export default function CategoryList({ setTotalCategory, setAccessToken }) {
-    const arrList = JSON.parse(localStorage.getItem('categoryList')) || []
+export default function CategoryList({ setTotalCategory, subtotal, setSubtotal, renderCategory, setRenderCategory }) {
     return (
         <div className='category'>
             <div className='category-head'>
@@ -17,22 +16,23 @@ export default function CategoryList({ setTotalCategory, setAccessToken }) {
             </div>
             <div className='category-added'>
                 {
-                    arrList.length === 0 ? '' :
+                    renderCategory.length === 0 ? '' :
                         <div>
-                            {arrList.map((elm, index) => {
+                            {renderCategory.map((elm, index) => {
                                 return (
                                     <CategoryListItem
                                         key={index}
                                         elm={elm}
                                         setTotalCategory={setTotalCategory}
-                                        setAccessToken={setAccessToken} />
+                                        setSubtotal={setSubtotal}
+                                        setRenderCategory={setRenderCategory}
+                                    />
                                 )
                             })}
-                            <Pay />
+                            <Pay subtotal={subtotal} />
                         </div>
                 }
             </div>
-
         </div>
     )
 }

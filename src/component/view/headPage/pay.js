@@ -1,15 +1,6 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 
-export default function Pay() {
-    const newArr = JSON.parse(localStorage.getItem('categoryList'))
-    console.log(newArr)
-    const [subtotal, setSubtotal] = useState(
-        newArr.reduce((pre, cur) => {
-            pre += cur.total
-            return pre
-        }, 0)
-    )
-    console.log(subtotal)
+export default function Pay({subtotal}) {
     return (
         <Fragment>
             <div className='category-pay ms-5 mt-5'>

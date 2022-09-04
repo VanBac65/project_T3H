@@ -13,11 +13,15 @@ function App() {
   const [log, setLog] = useState(accessToken === false ? 'LOGIN' : 'LOGOUT')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [detail, setDetail] = useState({})
-  // const [categoryList, setCategoryList] = useState([])
+  // const [detail, setDetail] = useState({})
   const [totalCategory, setTotalCategory] = useState(localStorage.getItem('categoryList') === null ? '0' : JSON.parse(localStorage.getItem('categoryList')).length)
-  // const [onCategory, setOnCategory] = useState(false)
-  // const [status, setStatus] = useState(localStorage?.getItem('status') || false)
+  const [subtotal, setSubtotal] = useState(
+    JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).reduce((pre, cur) => {
+      pre += cur.total
+      return pre
+    }, 0) : 0
+  )
+  const [renderCategory, setRenderCategory] = useState(JSON.parse(localStorage.getItem('categoryList')) || [])
   const handleUsername = (e) => {
     setUsername(pre => pre = e.target.value)
   }
@@ -26,7 +30,6 @@ function App() {
   }
   const details = (elm) => {
     localStorage.setItem('details', JSON.stringify(elm))
-    setDetail(pre => pre = elm)
   }
 
   const btnLogin = () => {
@@ -49,12 +52,48 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <HeadPage log={log} setLog={setLog} totalCategory={totalCategory} setTotalCategory={setTotalCategory} setAccessToken={setAccessToken} />
+        <HeadPage
+          log={log}
+          setLog={setLog}
+          totalCategory={totalCategory}
+          setTotalCategory={setTotalCategory}
+          subtotal={subtotal}
+          setSubtotal={setSubtotal}
+          renderCategory={renderCategory}
+          setRenderCategory={setRenderCategory}
+        />
         <Routes>
-          <Route path='/' element={<Home details={details} setTotalCategory={setTotalCategory} />} />
-          <Route path='/CustomerMenu' element={<Home details={details} setTotalCategory={setTotalCategory} />} />
-          <Route path='/details' element={<Details setTotalCategory={setTotalCategory}/>} />
-          <Route path='/Login'
+          <Route
+            path='/'
+            element={
+              <Home
+                details={details}
+                setTotalCategory={setTotalCategory}
+                setSubtotal={setSubtotal}
+                setRenderCategory={setRenderCategory}
+              />}
+          />
+          <Route
+            path='/CustomerMenu'
+            element={
+              <Home
+                details={details}
+                setTotalCategory={setTotalCategory}
+                setSubtotal={setSubtotal}
+                setRenderCategory={setRenderCategory}
+              />}
+          />
+          <Route
+            path='/details'
+            element={
+              <Details
+                setTotalCategory={setTotalCategory}
+                setSubtotal={setSubtotal}
+                setRenderCategory={setRenderCategory}
+              />}
+          />
+          <Route
+            path='/Login'
             element={<AuthPage
               btnLogin={btnLogin}
               handleUsername={handleUsername}

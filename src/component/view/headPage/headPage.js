@@ -5,7 +5,7 @@ import Search from 'antd/lib/transfer/search'
 import CategoryList from './categoryList'
 // import a from '../../../../public/cart.PNG'
 
-export default function HeadPage({ log, setLog, totalCategory, setTotalCategory, setAccessToken }) {
+export default function HeadPage({ log, setLog, totalCategory, setTotalCategory, subtotal, setSubtotal, renderCategory,setRenderCategory }) {
     const btnLog = (log) => {
         if (log === 'LOGOUT') {
             localStorage.removeItem('status')
@@ -31,7 +31,13 @@ export default function HeadPage({ log, setLog, totalCategory, setTotalCategory,
                         <span className='total rounded-circle border px-2'>{totalCategory}</span>
                     </label>
                     <input type={'checkbox'} className='nav-cart' id='nav-cart' />
-                    <CategoryList setTotalCategory={setTotalCategory} setAccessToken={setAccessToken} />
+                    <CategoryList
+                        setTotalCategory={setTotalCategory}
+                        subtotal={subtotal}
+                        setSubtotal={setSubtotal}
+                        renderCategory={renderCategory}
+                        setRenderCategory={setRenderCategory}
+                    />
                     <label htmlFor='nav-cart' className='overlay'></label>
                 </div>
             </div>
