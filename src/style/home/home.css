@@ -72,6 +72,10 @@
     z-index: 100;
 }
 
+.render-day-name {
+    height: 50px;
+}
+
 .render-day:first-child{
     padding-top: 50px;
 }
@@ -87,4 +91,29 @@
     transform: scale(1.2);
     z-index: -1;
     transition: transform 0.5s;
+}
+
+.detail {
+    /* margin-left: 5%; */
+    padding-top: 150px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.detail__img {
+    margin-left: 10%;
+    flex:1;
+}
+
+.detail__img img {
+    width: 100%;
+}
+
+.detail__description {
+    margin-left: 5%;
+    flex : 2;
+}
+
+.detail__description__price{
+    font-size: 28px;
 }

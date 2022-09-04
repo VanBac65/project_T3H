@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import DataDay from './dataDay'
 
-export default function RenderData() {
+export default function RenderData({ details, setTotalCategory }) {
     const [isLoading, setIsLoading] = useState(true)
     const [data, setData] = useState([])
     // const [dataDay, setDataDay] = useState([])
@@ -26,11 +26,11 @@ export default function RenderData() {
             <i className="fa-light fa-cart-shopping-fast"></i>
             {isLoading ? <div>Loading...</div> :
                 <div className='render-data'>
-                    <DataDay data={data} day={0} />
-                    <DataDay data={data} day={1} />
-                    <DataDay data={data} day={2} />
-                    <DataDay data={data} day={3} />
-                    <DataDay data={data} day={4} />
+                    <DataDay data={data} day={0} details={details} setTotalCategory={setTotalCategory} />
+                    <DataDay data={data} day={1} details={details} setTotalCategory={setTotalCategory} />
+                    <DataDay data={data} day={2} details={details} setTotalCategory={setTotalCategory} />
+                    <DataDay data={data} day={3} details={details} setTotalCategory={setTotalCategory} />
+                    <DataDay data={data} day={4} details={details} setTotalCategory={setTotalCategory} />
                 </div>}
         </div>
     )
