@@ -4,6 +4,7 @@ import CategoryListItem from './categoryListItem'
 import Pay from './pay'
 
 export default function CategoryList({ setTotalCategory, subtotal, setSubtotal, renderCategory, setRenderCategory }) {
+    // console.log(renderCategory)
     return (
         <div className='category'>
             <div className='category-head'>
@@ -19,6 +20,7 @@ export default function CategoryList({ setTotalCategory, subtotal, setSubtotal, 
                     renderCategory.length === 0 ? '' :
                         <div>
                             {renderCategory.map((elm, index) => {
+                                // console.log(elm)
                                 return (
                                     <CategoryListItem
                                         key={index}

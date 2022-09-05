@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react'
+import BtnPay from './btnPay'
 
 export default function Pay({subtotal}) {
     return (
@@ -19,9 +20,7 @@ export default function Pay({subtotal}) {
                 </div>
             </div>
             <div className='pay text-center mb-5'>
-                <button className='btn-pay bg-success w-75 btn p-2 rounded-pill'>
-                    PAY
-                </button>
+                <BtnPay/>
             </div>
         </Fragment>
     )
