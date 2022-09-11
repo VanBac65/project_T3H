@@ -16,10 +16,10 @@ export default function Register() {
       <p className='fs-6 fw-bold p-0 m-0 mt-3'>Password <span className='star'>*</span></p>
       <Input.Password name='password' />
       <div className='mt-3'>
-      <Checkbox>Remember me</Checkbox>
+        <Checkbox>Remember me</Checkbox>
       </div>
       <div className='mt-3'>
-      <Checkbox>Remember me</Checkbox>
+        <Checkbox>Remember me</Checkbox>
       </div>
       <div>
         <button className='btn w-100 bg-secondary rounded-pill mt-4'>LOGIN</button>

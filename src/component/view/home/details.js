@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../style/home/home.css'
 import ButtonAddToCard from './buttonAddToCard'
 
-export default function Details({ setTotalCategory, setSubtotal, setRenderCategory }) {
+export default function Details() {
   const details = JSON.parse(localStorage.getItem('details'))
   return (
     <div className='detail'>
@@ -13,7 +13,7 @@ export default function Details({ setTotalCategory, setSubtotal, setRenderCatego
         <h3>{details.name}</h3>
         <pre >{details.description}</pre>
         <p className='detail__description__price'>{Number(details.price).toLocaleString()} VND</p>
-        <ButtonAddToCard elm={details} setTotalCategory={setTotalCategory} setSubtotal={setSubtotal} setRenderCategory={setRenderCategory} type='details' />
+        <ButtonAddToCard elm={details} type='details' />
       </div>
     </div>
   )

@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../style/home/home.css'
 import RenderData from './renderData'
 
-export default function Home({ details, setTotalCategory, setSubtotal, setRenderCategory }) {
+export default function Home({ details }) {
   return (
     <div className='home'>
       <div className='home-head'>
@@ -41,12 +41,7 @@ export default function Home({ details, setTotalCategory, setSubtotal, setRender
             </div>
           </nav>
         </div>
-        <RenderData
-          details={details}
-          setTotalCategory={setTotalCategory}
-          setSubtotal={setSubtotal}
-          setRenderCategory={setRenderCategory}
-        />
+        <RenderData details={details} />
       </div>
     </div>
   )

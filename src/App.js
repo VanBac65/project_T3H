@@ -13,15 +13,6 @@ function App() {
   const [log, setLog] = useState(accessToken === false ? 'LOGIN' : 'LOGOUT')
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  // const [detail, setDetail] = useState({})
-  const [totalCategory, setTotalCategory] = useState(localStorage.getItem('categoryList') === null ? '0' : JSON.parse(localStorage.getItem('categoryList')).length)
-  const [subtotal, setSubtotal] = useState(
-    JSON.parse(localStorage.getItem('categoryList')) ? JSON.parse(localStorage.getItem('categoryList')).reduce((pre, cur) => {
-      pre += cur.total
-      return pre
-    }, 0) : 0
-  )
-  const [renderCategory, setRenderCategory] = useState(JSON.parse(localStorage.getItem('categoryList')) || [])
   const handleUsername = (e) => {
     setUsername(pre => pre = e.target.value)
   }
@@ -52,54 +43,18 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <HeadPage
-          log={log}
-          setLog={setLog}
-          totalCategory={totalCategory}
-          setTotalCategory={setTotalCategory}
-          subtotal={subtotal}
-          setSubtotal={setSubtotal}
-          renderCategory={renderCategory}
-          setRenderCategory={setRenderCategory}
-        />
+        <HeadPage log={log} setLog={setLog} />
         <Routes>
-          <Route
-            path='/'
-            element={
-              <Home
-                details={details}
-                setTotalCategory={setTotalCategory}
-                setSubtotal={setSubtotal}
-                setRenderCategory={setRenderCategory}
-              />}
-          />
-          <Route
-            path='/CustomerMenu'
-            element={
-              <Home
-                details={details}
-                setTotalCategory={setTotalCategory}
-                setSubtotal={setSubtotal}
-                setRenderCategory={setRenderCategory}
-              />}
-          />
-          <Route
-            path='/details'
-            element={
-              <Details
-                setTotalCategory={setTotalCategory}
-                setSubtotal={setSubtotal}
-                setRenderCategory={setRenderCategory}
-              />}
-          />
+          <Route path='/' element={<Home details={details} />} />
+          <Route path='/CustomerMenu' element={<Home details={details} />} />
+          <Route path='/details' element={<Details />} />
           <Route
             path='/Login'
-            element={<AuthPage
-              btnLogin={btnLogin}
-              handleUsername={handleUsername}
-              handlePassword={handlePassword}
-              accessToken={accessToken}
-            />} />
+            element={<AuthPage 
+            btnLogin={btnLogin} 
+            handleUsername={handleUsername} 
+            handlePassword={handlePassword} 
+            accessToken={accessToken}/>} />
         </Routes>
         <Footer />
       </BrowserRouter>

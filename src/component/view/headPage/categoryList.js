@@ -1,10 +1,15 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import '../../../style/headPage/headPage.css'
 import CategoryListItem from './categoryListItem'
 import Pay from './pay'
 
-export default function CategoryList({ setTotalCategory, subtotal, setSubtotal, renderCategory, setRenderCategory }) {
-    // console.log(renderCategory)
+export default function CategoryList() {
+    const categoryList = useSelector(state => state.categoryList)
+    console.log(categoryList)
+    const test = Array.isArray(categoryList)
+    console.log(test)
+
     return (
         <div className='category'>
             <div className='category-head'>
@@ -17,21 +22,19 @@ export default function CategoryList({ setTotalCategory, subtotal, setSubtotal, 
             </div>
             <div className='category-added'>
                 {
-                    renderCategory.length === 0 ? '' :
+                    categoryList?.length === 0 ? '' :
                         <div>
-                            {renderCategory.map((elm, index) => {
-                                // console.log(elm)
+                            {categoryList.map((elm, index) => {
+                                console.log(elm)
                                 return (
                                     <CategoryListItem
                                         key={index}
+                                        index={index}
                                         elm={elm}
-                                        setTotalCategory={setTotalCategory}
-                                        setSubtotal={setSubtotal}
-                                        setRenderCategory={setRenderCategory}
                                     />
                                 )
                             })}
-                            <Pay subtotal={subtotal} />
+                            <Pay />
                         </div>
                 }
             </div>

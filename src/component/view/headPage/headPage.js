@@ -3,9 +3,10 @@ import '../../../style/headPage/headPage.css'
 import { Link } from 'react-router-dom'
 import Search from 'antd/lib/transfer/search'
 import CategoryList from './categoryList'
+import { useSelector } from 'react-redux'
 // import a from '../../../../public/cart.PNG'
 
-export default function HeadPage({ log, setLog, totalCategory, setTotalCategory, subtotal, setSubtotal, renderCategory, setRenderCategory }) {
+export default function HeadPage({ log, setLog }) {
     const btnLog = (log) => {
         if (log === 'LOGOUT') {
             localStorage.removeItem('status')
@@ -13,6 +14,8 @@ export default function HeadPage({ log, setLog, totalCategory, setTotalCategory,
             setLog('LOGIN')
         }
     }
+    const categoryList = useSelector(state => state.categoryList)
+    // const test = categoryList.length
     return (
         <div className='container-head'>
             <div className='head-page'>
@@ -28,16 +31,10 @@ export default function HeadPage({ log, setLog, totalCategory, setTotalCategory,
                     </div>
                     <label htmlFor='nav-cart' className='btn btn-cart'>
                         <img className='img-cart' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRay0SfdAYA00zHxcHegaJME8l_83R5k1u4vQ&usqp=CAU' alt='' />
-                        <span className='total rounded-circle border px-2'>{totalCategory}</span>
+                        <span className='total rounded-circle border px-2'>{categoryList.length}</span>
                     </label>
                     <input type={'checkbox'} className='nav-cart' id='nav-cart' />
-                    <CategoryList
-                        setTotalCategory={setTotalCategory}
-                        subtotal={subtotal}
-                        setSubtotal={setSubtotal}
-                        renderCategory={renderCategory}
-                        setRenderCategory={setRenderCategory}
-                    />
+                    <CategoryList />
                     <label htmlFor='nav-cart' className='overlay'></label>
                 </div>
             </div>
