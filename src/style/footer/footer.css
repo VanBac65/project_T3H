@@ -1,0 +1,20 @@
+.footer {
+    margin-top: 50px;
+    
+    box-shadow: 0 0 10px grey;
+}
+
+.footer-child {
+    padding-top: 50px;
+    display: flex;
+    padding-left: 5%;
+}
+
+.footer-img {
+    padding: 20px;
+    flex: 1;
+}
+
+.footer-content {
+    flex: 10;
+}
