@@ -1,17 +1,12 @@
 import React, { Fragment } from 'react'
 import Login from './login'
-import Register from './register'
+// import Register from './register'
 
-export default function AuthPage({ btnLogin, handleUsername, handlePassword, accessToken }) {
+export default function AuthPage() {
     return (
         <Fragment>
             <div>
-                <Login
-                    btnLogin={btnLogin}
-                    handleUsername={handleUsername}
-                    handlePassword={handlePassword}
-                    accessToken={accessToken}
-                />
+                <Login/>
             </div>
             {/* <div>
                 <Register />

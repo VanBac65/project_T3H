@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import ButtonAddToCard from './buttonAddToCard'
+import ButtonAddToCart from './buttonAddToCart'
 
-export default function DataDay({ data, day, details, setRenderCategory }) {
+export default function DataDay({ data, day, details }) {
     let valueDay
     let titleDay
     if (day === 0) {
@@ -30,7 +30,7 @@ export default function DataDay({ data, day, details, setRenderCategory }) {
             <div className='fs-4 fw-bold mt-3'>{titleDay}</div>
             <div className='row d-flex'>
                 {
-                    data[day].products.data.map((elm) => {
+                    data[day].products.data.map((elm,index) => {
                         return (
                             <div key={elm?.id} className='col-md-4 text-center mt-5'>
                                 <Link to='/details'>
@@ -45,7 +45,7 @@ export default function DataDay({ data, day, details, setRenderCategory }) {
                                 </Link>
                                 <p className='render-day-name fs-6 mt-3 mb-0'>{elm?.name}</p>
                                 <p className='fs-6 mt-0'>{`${(Number(elm?.price)).toLocaleString()} ${elm?.currency}`}</p>
-                                <ButtonAddToCard elm={elm} setRenderCategory={setRenderCategory} />
+                                <ButtonAddToCart elm={elm} index={index}/>
                             </div>
                         )
                     })

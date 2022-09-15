@@ -6,10 +6,6 @@ import Pay from './pay'
 
 export default function CategoryList() {
     const categoryList = useSelector(state => state.categoryList)
-    console.log(categoryList)
-    const test = Array.isArray(categoryList)
-    console.log(test)
-
     return (
         <div className='category'>
             <div className='category-head'>
@@ -25,7 +21,6 @@ export default function CategoryList() {
                     categoryList?.length === 0 ? '' :
                         <div>
                             {categoryList.map((elm, index) => {
-                                console.log(elm)
                                 return (
                                     <CategoryListItem
                                         key={index}

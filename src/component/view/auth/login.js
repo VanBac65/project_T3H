@@ -3,9 +3,20 @@ import Checkbox from 'antd/lib/checkbox/Checkbox'
 import React from 'react'
 import '../../../style/login/login.css'
 import BtnLogin from './btnLogin'
+// import { SET_PASS_ACC, SET_USER_ACC } from './app/reducer/accountSlice';
+import { useDispatch } from 'react-redux';
+import { SET_PASS_ACC, SET_USER_ACC } from '../../../app/reducer/accountSlice'
 
-export default function Login({ btnLogin, handleUsername, handlePassword, accessToken }) {
-
+export default function Login() {
+  const dispatch = useDispatch()
+  const handleUsername = (e) => {
+    const action = SET_USER_ACC(e.target.value)
+    dispatch(action)
+  }
+  const handlePassword = (e) => {
+    const action = SET_PASS_ACC(e.target.value)
+    dispatch(action)
+  }
   return (
     <div className='login'>
       <div className='login-head'>
@@ -20,7 +31,7 @@ export default function Login({ btnLogin, handleUsername, handlePassword, access
       <div className='mt-3'>
         <Checkbox>Remember me</Checkbox>
       </div>
-      <BtnLogin btnLogin={btnLogin} accessToken={accessToken} />
+      <BtnLogin />
     </div>
   )
 }

@@ -2,7 +2,6 @@ import React from 'react'
 
 export default function BtnPay() {
     const login = localStorage.getItem('status')
-    console.log(login)
     const pay = () => {
         if(login){
             alert('Thanh toán thành công!!')

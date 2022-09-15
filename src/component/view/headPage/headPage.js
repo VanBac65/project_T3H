@@ -3,27 +3,30 @@ import '../../../style/headPage/headPage.css'
 import { Link } from 'react-router-dom'
 import Search from 'antd/lib/transfer/search'
 import CategoryList from './categoryList'
-import { useSelector } from 'react-redux'
-// import a from '../../../../public/cart.PNG'
+import { useDispatch, useSelector } from 'react-redux'
+import { SET_LOG } from '../../../app/reducer/loginSlice'
 
-export default function HeadPage({ log, setLog }) {
-    const btnLog = (log) => {
-        if (log === 'LOGOUT') {
+export default function HeadPage() {
+    const dispatch = useDispatch()
+    const setLog = useSelector(state => state.setLog)
+    const btnLog = (setLog) => {
+        if (setLog === 'LOGOUT') {
+            console.log(setLog)
             localStorage.removeItem('status')
             localStorage.removeItem('accessToken')
-            setLog('LOGIN')
+            const action = SET_LOG('LOGIN')
+            dispatch(action)
         }
     }
     const categoryList = useSelector(state => state.categoryList)
-    // const test = categoryList.length
     return (
         <div className='container-head'>
             <div className='head-page'>
                 <Link to='/CustomerMenu'>
                     <img className='head-img' src='https://qa.muangay-vn.com/static/media/logo.c0c51f72.svg' alt='' />
                 </Link>
-                <Link className='fs-5 ms-5' onClick={() => { btnLog(log) }} to={`/${log === 'LOGOUT' ? 'CustomerMenu' : 'LOGIN'}`}>
-                    {log}
+                <Link className='fs-5 ms-5' onClick={() => { btnLog(setLog) }} to={`/${setLog === 'LOGOUT' ? 'CustomerMenu' : 'LOGIN'}`}>
+                    {setLog}
                 </Link>
                 <div className='cart float-end me-5 mt-3 d-flex'>
                     <div className='mt-2 me-3'>

@@ -21,7 +21,7 @@ export const categoryListSlice = createSlice({
             return state
         },
         decrementCountCategoryList(state, action) {
-            console.log(state[action.payload].count)
+            // console.log(state[action.payload].count)
             if (state[action.payload].count > 1) {
                 state[action.payload].count = state[action.payload].count - 1
                 state[action.payload].total = state[action.payload].count * state[action.payload].price

@@ -5,7 +5,6 @@ import DataDay from './dataDay'
 export default function RenderData({ details }) {
     const [isLoading, setIsLoading] = useState(true)
     const [data, setData] = useState([])
-    // const [dataDay, setDataDay] = useState([])
     useEffect(() => {
         axios.post(`https://api-qa.muangay-vn.com/api/consumers/menu/data`,
             {

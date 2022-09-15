@@ -1,6 +1,6 @@
 import React from 'react'
 import '../../../style/home/home.css'
-import ButtonAddToCard from './buttonAddToCard'
+import ButtonAddToCart from './buttonAddToCart'
 
 export default function Details() {
   const details = JSON.parse(localStorage.getItem('details'))
@@ -13,7 +13,7 @@ export default function Details() {
         <h3>{details.name}</h3>
         <pre >{details.description}</pre>
         <p className='detail__description__price'>{Number(details.price).toLocaleString()} VND</p>
-        <ButtonAddToCard elm={details} type='details' />
+        <ButtonAddToCart elm={details} type='details' />
       </div>
     </div>
   )
