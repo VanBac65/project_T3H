@@ -1,10 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { clearCategoryList } from '../../../app/reducer/categoryListSlice'
 
 export default function BtnPay() {
     const login = localStorage.getItem('status')
+    const dispatch = useDispatch()
     const pay = () => {
         if(login){
             alert('Thanh toán thành công!!')
+            const action = clearCategoryList()
+            dispatch(action)
         }
         else alert('Bạn cần đăng nhập!!')
     }

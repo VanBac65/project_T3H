@@ -27,7 +27,7 @@ export default function BtnLogin() {
     }
     return (
         <div>
-            <Link to={login === 'LOGIN' ? '/LOGIN' : '/CustomerMenu'}>
+            <Link to={localStorage.getItem('accessToken') === null ? '/LOGIN' : '/CustomerMenu'}>
                 <button className='btn w-100 bg-secondary rounded-pill mt-4' onClick={() => btnLogin()}>LOGIN</button>
             </Link>
         </div>

@@ -4,16 +4,50 @@ import React from 'react'
 import '../../../style/login/login.css'
 import BtnLogin from './btnLogin'
 // import { SET_PASS_ACC, SET_USER_ACC } from './app/reducer/accountSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SET_PASS_ACC, SET_USER_ACC } from '../../../app/reducer/accountSlice'
+import axios from 'axios'
 
 export default function Login() {
   const dispatch = useDispatch()
+  const account = useSelector(state => state.account)
   const handleUsername = (e) => {
+    axios.post('https://api-qa.muangay-vn.com/api/user/login', {
+            "mobilePhone": e.target.value,
+            "password": account.password,
+        })
+            .then(rs => {
+                if (rs?.status === 201) {
+                    localStorage.setItem('status', true)
+                    localStorage.setItem('accessToken', rs.data.data.token)
+                    // const action = SET_LOG('LOGOUT')
+                    // dispatch(action) 
+                }
+            })
+            .catch(er => {
+                // alert('Sai tai khoan hoac mat khau!!!')
+                localStorage.removeItem('accessToken')
+            })
     const action = SET_USER_ACC(e.target.value)
     dispatch(action)
   }
   const handlePassword = (e) => {
+    axios.post('https://api-qa.muangay-vn.com/api/user/login', {
+            "mobilePhone": account.username,
+            "password": e.target.value,
+        })
+            .then(rs => {
+                if (rs?.status === 201) {
+                    localStorage.setItem('status', true)
+                    localStorage.setItem('accessToken', rs.data.data.token)
+                    // const action = SET_LOG('LOGOUT')
+                    // dispatch(action) 
+                }
+            })
+            .catch(er => {
+                // alert('Sai tai khoan hoac mat khau!!!')
+                localStorage.removeItem('accessToken')
+            })
     const action = SET_PASS_ACC(e.target.value)
     dispatch(action)
   }

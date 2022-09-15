@@ -32,9 +32,13 @@ export const categoryListSlice = createSlice({
                 localStorage.setItem('categoryList', JSON.stringify(state))
             }
             return state
+        },
+        clearCategoryList(state, action){
+            localStorage.setItem('categoryList', '[]')
+            return []
         }
     }
 })
 
 export const { actions, reducer } = categoryListSlice
-export const { addCategoryList, removeCategoryList, incrementCountCategoryList, decrementCountCategoryList } = actions
+export const { addCategoryList, removeCategoryList, incrementCountCategoryList, decrementCountCategoryList, clearCategoryList } = actions
