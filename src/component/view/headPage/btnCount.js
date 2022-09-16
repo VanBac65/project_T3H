@@ -1,11 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux';
 import { decrementCountCategoryList, incrementCountCategoryList } from '../../../app/reducer/categoryListSlice';
 
 export default function BtnCount({ elm, index }) {
     const dispatch = useDispatch()
     const handleSub = (elm) => {
-        console.log(elm)
         if (elm.count - 1 > 1) {
         }
         const action = decrementCountCategoryList(index)
@@ -19,7 +18,7 @@ export default function BtnCount({ elm, index }) {
         <div className='category-item-btn d-flex rounded-pill border'>
             <div className='category-item-btn-action'>
                 <button onClick={() => handleSub(elm)} className='category-item-btn-action1 rounded-pill border-0'>
-                    {elm.count===1?'del':'-'}
+                    {elm.count === 1 ? 'del' : '-'}
                 </button>
                 <button className='category-item-btn-value rounded-circle btn bg-secondary'>
                     {elm.count}

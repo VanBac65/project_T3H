@@ -1,19 +1,24 @@
-import React from 'react'
+import { useSelector } from 'react-redux'
 import '../../../style/home/home.css'
 import RenderData from './renderData'
+import { setDate } from './setDate'
 
 export default function Home({ details }) {
+  const data = useSelector(state => state.data)
+  const info = useSelector(state => state.info)
+  // console.log(info)
+  console.log(data)
   return (
     <div className='home'>
       <div className='home-head'>
-        <p className='bg-title'>Everything Ok</p>
+        <p className='bg-title'>{info?.outlet?.name}</p>
         <div className='head-content'>
           <div className='head-content-child'>
-            <p className='fw-bold fs-5'>Everything Ok</p>
-            <p className='fw-bold fs-3'>THỰC ĐƠN BỮA TRƯA</p>
-            <p className='fw-bold fs-6'>Thực đơn cho Phòng</p>
+            <p className='fw-bold fs-5'>{info?.outlet?.name}</p>
+            <p className='fw-bold fs-3'>{data?.menu?.name}</p>
+            <p className='fw-bold fs-6'>{data?.menu?.description}</p>
             <p className='fs-6'>Closes at 12 PM</p>
-            <p className='fs-6'>Abcxyz, Cổ Nhuế 2, Bắc Từ Liêm, Hà Nội</p>
+            <p className='fs-6'>{info?.outlet?.fullAddress}</p>
           </div>
         </div>
       </div>
@@ -22,21 +27,16 @@ export default function Home({ details }) {
           <nav className="navbar navbar-expand-sm navbar-light">
             <div className="container-fluid">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="#monday">Thứ 2</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#tuesday">Thứ 3</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#wednesday">Thứ 4</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#thursday">Thứ 5</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#friday">Thứ 6</a>
-                </li>
+                {
+                  data?.sections?.map((elm, index) => {
+                    const date = setDate(elm?.name)
+                    return (
+                      <li key={index} className="nav-item">
+                        <a className="nav-link" href={`#${date}`}>{elm?.name}</a>
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
           </nav>

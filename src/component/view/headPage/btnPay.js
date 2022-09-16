@@ -6,7 +6,7 @@ export default function BtnPay() {
     const login = localStorage.getItem('status')
     const dispatch = useDispatch()
     const pay = () => {
-        if(login){
+        if (login) {
             alert('Thanh toán thành công!!')
             const action = clearCategoryList()
             dispatch(action)
@@ -14,8 +14,8 @@ export default function BtnPay() {
         else alert('Bạn cần đăng nhập!!')
     }
     return (
-            <label className='btn-pay bg-success w-75 btn p-2 rounded-pill' htmlFor='nav-cart' onClick={()=>pay()}>
-                    PAY
-            </label>
+        <label className='btn-pay bg-success w-75 btn p-2 rounded-pill' htmlFor='nav-cart' onClick={() => pay()}>
+            PAY
+        </label>
     )
 }
