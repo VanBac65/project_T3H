@@ -7,7 +7,7 @@ import BtnLogin from './btnLogin'
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_PASS_ACC, SET_USER_ACC } from '../../../app/reducer/accountSlice'
 import axios from 'axios'
-import { ADD_TOKEN } from '../../../app/reducer/tokenSlice'
+import { ADD_TOKEN, CLEAR_TOKEN } from '../../../app/reducer/tokenSlice'
 import { BASE_URL } from '../../../services/axiosClient'
 
 export default function Login() {
@@ -28,6 +28,7 @@ export default function Login() {
       })
       .catch(er => {
         localStorage.removeItem('accessToken')
+        dispatch(CLEAR_TOKEN())
       })
     const action = SET_USER_ACC(e.target.value)
     dispatch(action)
@@ -46,7 +47,7 @@ export default function Login() {
         }
       })
       .catch(er => {
-        // alert('Sai tai khoan hoac mat khau!!!')
+        dispatch(CLEAR_TOKEN())   
         localStorage.removeItem('accessToken')
       })
     const action = SET_PASS_ACC(e.target.value)

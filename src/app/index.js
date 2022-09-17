@@ -1,6 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { accountSlide } from "./reducer/accountSlice";
-// import rootReducer from "./reducer";
 import { categoryListSlice } from "./reducer/categoryListSlice";
 import { dataSlice } from "./reducer/dataSlice";
 import { infoSlice } from "./reducer/infoSlice";

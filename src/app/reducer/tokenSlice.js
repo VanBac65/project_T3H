@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const tokenSlice = createSlice({
     name: 'token',
-    initialState: {},
+    initialState: null,
     reducers: {
         ADD_TOKEN(state, action) {
             return action.payload
         },
         CLEAR_TOKEN(state, action) {
-            return {}
+            return null
         }
     }
 })

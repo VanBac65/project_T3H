@@ -30,9 +30,10 @@ export default function BtnLogin() {
         dispatch(CLEAR_ACC())
         dispatch(CLEAR_TOKEN())
     }
+    console.log(token)
     return (
         <div>
-            <Link to={token === {} ? '/LOGIN' : '/CustomerMenu'}>
+            <Link to={token === null ? '/LOGIN' : '/CustomerMenu'}>
                 <button className='btn w-100 bg-secondary rounded-pill mt-4' onClick={() => btnLogin()}>LOGIN</button>
             </Link>
         </div>
