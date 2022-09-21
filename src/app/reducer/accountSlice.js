@@ -1,20 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+const init = [{
+    user: '0364776215',
+    password: 'Test@1234'
+}]
+if(localStorage.getItem('arrAcc')){
+    init.push(JSON.parse(localStorage.getItem('arrAcc')))
+}
 export const accountSlide = createSlice({
     name: 'acc',
-    initialState: {},
+    initialState: init,
     reducers: {
-        SET_USER_ACC(state, action) {
-            return { ...state, username: action.payload }
-        },
-        SET_PASS_ACC(state, action) {
-            return { ...state, password: action.payload }
-        },
-        CLEAR_ACC(Sstate, action) {
-            return {}
+        ADD_ACC(state, action) {
+            state.push(action.payload)
         }
+        // SET_PASS_ACC(state, action) {
+        //     return { ...state, password: action.payload }
+        // },
+        // CLEAR_ACC(state, action) {
+        //     return {}
+        // }
     }
 })
 
 export const { actions } = accountSlide
-export const { SET_USER_ACC, SET_PASS_ACC, CLEAR_ACC } = actions
+export const { ADD_ACC } = actions

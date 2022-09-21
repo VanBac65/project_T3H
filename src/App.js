@@ -11,6 +11,7 @@ import { BASE_URL, BODY } from './services/axiosClient';
 import axios from 'axios';
 import { useEffect } from 'react';
 import { GET_INFO } from './app/reducer/infoSlice';
+import Register from './component/view/auth/register';
 
 function App() {
   const details = (elm) => {
@@ -40,6 +41,9 @@ return (
         <Route
           path='/Login'
           element={<AuthPage />} />
+          <Route
+          path='/Register'
+          element={<Register />} />
       </Routes>
       <Footer />
     </BrowserRouter>

@@ -11,7 +11,5 @@ export const setDate = (date) => {
     else if (date === 'THỨ 5') {
         return 'thursday'
     }
-    else if (date === 'THỨ 6') {
-        return 'friday'
-    }
+    return 'friday'
 }

@@ -7,7 +7,7 @@ export default function Pay() {
     const total = category?.reduce(((pre, cur) => {
         pre = pre + Number(cur.total)
         return pre
-    }),0) || 0
+    }), 0) || 0
     return (
         <Fragment>
             <div className='category-pay ms-5 mt-5'>

@@ -18,7 +18,7 @@ export default function CategoryList() {
             </div>
             <div className='category-added'>
                 {
-                    categoryList?.length === 0 ? '' :
+                    categoryList?.length === 0 ? <div className='text-center mt-5' style={{ fontSize: '30px', marginRight: '120px' }}>Giỏ hàng trống</div> :
                         <div>
                             {categoryList.map((elm, index) => {
                                 return (

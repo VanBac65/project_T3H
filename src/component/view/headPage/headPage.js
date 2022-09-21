@@ -5,17 +5,18 @@ import Search from 'antd/lib/transfer/search'
 import CategoryList from './categoryList'
 import { useDispatch, useSelector } from 'react-redux'
 import { SET_LOG } from '../../../app/reducer/loginSlice'
+import { CLEAR_TOKEN } from '../../../app/reducer/tokenSlice'
 
 export default function HeadPage() {
     const dispatch = useDispatch()
     const setLog = useSelector(state => state.setLog)
     const btnLog = (setLog) => {
         if (setLog === 'LOGOUT') {
-            console.log(setLog)
             localStorage.removeItem('status')
             localStorage.removeItem('accessToken')
             const action = SET_LOG('LOGIN')
             dispatch(action)
+            dispatch(CLEAR_TOKEN())
         }
     }
     const categoryList = useSelector(state => state.categoryList)

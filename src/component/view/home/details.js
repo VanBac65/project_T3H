@@ -7,7 +7,7 @@ export default function Details() {
   return (
     <div className='detail'>
       <div className='detail__img'>
-        <img src={details.imagePath} alt=''/>
+        <img src={details.imagePath} alt='' />
       </div>
       <div className='detail__description'>
         <h3>{details.name}</h3>

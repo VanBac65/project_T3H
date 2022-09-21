@@ -1,4 +1,4 @@
-import React, {  } from 'react'
+import React from 'react'
 import BtnCount from './btnCount';
 
 export default function CategoryListItem({ index, elm }) {

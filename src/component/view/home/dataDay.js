@@ -25,7 +25,9 @@ export default function DataDay({ data, details }) {
                                 </Link>
                                 <p className='render-day-name fs-6 mt-3 mb-0'>{elm?.name}</p>
                                 <p className='fs-6 mt-0'>{`${(Number(elm?.price)).toLocaleString()} ${elm?.currency}`}</p>
-                                <ButtonAddToCart elm={elm} index={index} />
+                                <div className='' style={{ width: '100%' }}>
+                                    <ButtonAddToCart elm={elm} index={index} />
+                                </div>
                             </div>
                         )
                     })

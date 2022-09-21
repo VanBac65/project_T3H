@@ -7,7 +7,7 @@ export default function Home({ details }) {
   const data = useSelector(state => state.data)
   const info = useSelector(state => state.info)
   // console.log(info)
-  console.log(data)
+  // console.log(data)
   return (
     <div className='home'>
       <div className='home-head'>
