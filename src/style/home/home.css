@@ -63,6 +63,10 @@
     margin-left: 20px;
 }
 
+a.nav-link.active{
+    background-color: grey;
+}
+
 .render-data{
     scroll-behavior: smooth;
 }

@@ -30,7 +30,10 @@ export const categoryListSlice = createSlice({
             }
             return state
         },
-        clearCategoryList(state, action){
+        removeItemCategory(state, action) {
+            state.splice(action.payload, 1)
+        },
+        clearCategoryList(state, action) {
             localStorage.setItem('categoryList', '[]')
             return []
         }
@@ -38,4 +41,9 @@ export const categoryListSlice = createSlice({
 })
 
 export const { actions, reducer } = categoryListSlice
-export const { addCategoryList, removeCategoryList, incrementCountCategoryList, decrementCountCategoryList, clearCategoryList } = actions
+export const { addCategoryList,
+    removeCategoryList,
+    incrementCountCategoryList,
+    decrementCountCategoryList,
+    clearCategoryList,
+    removeItemCategory } = actions
