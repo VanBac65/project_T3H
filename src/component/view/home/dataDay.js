@@ -7,7 +7,7 @@ export default function DataDay({ data, details }) {
     const date = setDate(data?.name)
     return (
         <div className='container render-day' id={`${date}`}>
-            <div className='fs-4 fw-bold mt-3'>{data.name}</div>
+            <div className='fs-4 fw-bold'>{data.name}</div>
             <div className='row d-flex'>
                 {
                     data.products.data.map((elm, index) => {

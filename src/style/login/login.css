@@ -18,3 +18,11 @@
     box-shadow: 0 0 10px grey;
     border-radius: 50%;
 }
+
+.btn-login {
+    background-color: #2bc6b6;
+}
+
+.btn-login:hover{
+    box-shadow: 0 0 10px  #2bc6b6;
+}

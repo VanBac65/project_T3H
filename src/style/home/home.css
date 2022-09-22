@@ -51,9 +51,9 @@
 .nav-date{
     margin-left: 5%;
     margin-right: 5%;
-    margin-top: 30px;
+    margin-top: 10px;
     position: sticky;
-    top: 80px;
+    top: 75px;
     font-size: 20px;
     border-bottom: 1px solid grey;
     background-color: white;
@@ -63,8 +63,12 @@
     margin-left: 20px;
 }
 
+.navbar{
+    padding: 1px;
+}
+
 a.nav-link.active{
-    background-color: grey;
+    background-color: #2bc6b6;
 }
 
 .render-data{
@@ -72,7 +76,7 @@ a.nav-link.active{
 }
 
 .render-day{
-    padding-top: 100px;
+    padding-top: 50px;
     z-index: 100;
 }
 

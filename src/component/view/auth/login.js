@@ -1,10 +1,13 @@
 import { Input } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../../../style/login/login.css'
 import BtnLogin from './btnLogin'
 import { Link } from 'react-router-dom'
 
 export default function Login() {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const handleUsername = (e) => {

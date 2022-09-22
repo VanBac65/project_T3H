@@ -1,11 +1,14 @@
 import { Input } from 'antd'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { ADD_ACC } from '../../../app/reducer/accountSlice'
-import '../../../style/login/login.css'
+import '../../../style/login/register.css'
 
 export default function Register() {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   const dispatch = useDispatch()
   const [username, setUsername] = useState('')
   const [pass, setPass] = useState('')
@@ -52,7 +55,7 @@ export default function Register() {
       <Input.Password name='password' onChange={(e) => handleConfirmPass(e)} />
       <div className='mt-5'>
         <Link to={redirect ? '/Login' : '/Register'}>
-          <button className='btn w-100 bg-secondary rounded-pill mt-4'
+          <button className='btn btn-register w-100 mt-4'
             onClick={() => btnCreate()}>
             CREATE
           </button>

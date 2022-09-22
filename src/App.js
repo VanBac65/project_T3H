@@ -12,9 +12,11 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { GET_INFO } from './app/reducer/infoSlice';
 import Register from './component/view/auth/register';
+import { SET_SEARCH_OR_HOME } from './app/reducer/searchOrHome';
 
 function App() {
   const details = (elm) => {
+    dispatch(SET_SEARCH_OR_HOME('home'))
     localStorage.setItem('details', JSON.stringify(elm))
   }
   const dispatch = useDispatch()
@@ -29,26 +31,26 @@ function App() {
         const action = GET_INFO(rs.data.data)
         dispatch(action)
       })
-}, [])
-return (
-  <div className="App">
-    <BrowserRouter>
-      <HeadPage />
-      <Routes>
-        <Route path='/' element={<Home details={details} />} />
-        <Route path='/CustomerMenu' element={<Home details={details} />} />
-        <Route path='/details' element={<Details />} />
-        <Route
-          path='/Login'
-          element={<AuthPage />} />
+  }, [])
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <HeadPage />
+        <Routes>
+          <Route path='/' element={<Home details={details} />} />
+          <Route path='/CustomerMenu' element={<Home details={details} />} />
+          <Route path='/details' element={<Details details={details}/>} />
           <Route
-          path='/Register'
-          element={<Register />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  </div>
-);
+            path='/Login'
+            element={<AuthPage />} />
+          <Route
+            path='/Register'
+            element={<Register />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;

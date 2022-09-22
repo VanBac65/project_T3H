@@ -32,6 +32,7 @@ export const categoryListSlice = createSlice({
         },
         removeItemCategory(state, action) {
             state.splice(action.payload, 1)
+            localStorage.setItem('categoryList', '[]')
         },
         clearCategoryList(state, action) {
             localStorage.setItem('categoryList', '[]')
