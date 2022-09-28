@@ -13,10 +13,13 @@ import { SET_SEARCH_OR_HOME } from '../../../app/reducer/searchOrHome'
 export default function HeadPage() {
     const dispatch = useDispatch()
     const setLog = useSelector(state => state.setLog)
+    const token = localStorage.getItem('token')
     const [valueInput, setValueInput] = useState('')
     const btnLog = (setLog) => {
-        if (setLog === 'LOGOUT') {
+        if (token) {
+            console.log(1)
             localStorage.removeItem('status')
+            localStorage.removeItem('token')
             localStorage.removeItem('accessToken')
             const action = SET_LOG('LOGIN')
             dispatch(action)

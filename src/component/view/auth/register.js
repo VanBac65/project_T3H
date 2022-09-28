@@ -1,4 +1,5 @@
 import { Input } from 'antd'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
@@ -32,6 +33,7 @@ export default function Register() {
         user: username,
         password: pass
       }))
+      axios.get()
       alert('Đăng ký thành công!!!')
     }
   }

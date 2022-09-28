@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import { clearCategoryList } from '../../../app/reducer/categoryListSlice'
 
 export default function BtnPay() {
-    const token = useSelector(state => state.token)
+    // const token = useSelector(state => state.token)
     const dispatch = useDispatch()
     const pay = () => {
-        if (token.length > 0) {
+        if (localStorage.getItem('token')) {
             alert('Thanh toán thành công!!')
             const action = clearCategoryList()
             dispatch(action)

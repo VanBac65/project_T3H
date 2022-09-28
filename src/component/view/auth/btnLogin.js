@@ -15,6 +15,7 @@ export default function BtnLogin({ username, password }) {
                 "password": password
             })
                 .then(rs => {
+                    localStorage.setItem('token',rs.data.data.token)
                     dispatch(SET_LOG('LOGOUT'))
                 })
                 .catch(rs=>{

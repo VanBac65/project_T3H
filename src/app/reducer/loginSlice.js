@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const loginSlice = createSlice({
     name: 'setLog',
-    initialState: localStorage.getItem('accessToken') !== null ? 'LOGOUT' : 'LOGIN',
+    initialState: localStorage.getItem('token') !== null ? 'LOGOUT' : 'LOGIN',
     reducers: {
         SET_LOG(state, action) {
             return action.payload
