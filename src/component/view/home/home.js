@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import '../../../style/home/home.css'
 import DataSearch from './dataSearch'
@@ -5,6 +6,9 @@ import RenderData from './renderData'
 import { setDate } from './setDate'
 
 export default function Home({ details }) {
+  useEffect(() => {
+    window.scroll(0, 0)
+  }, [])
   const data = useSelector(state => state.data)
   const info = useSelector(state => state.info)
   const setHome = useSelector(state => state.searchOrHome)
